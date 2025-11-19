@@ -5,22 +5,24 @@
 
 // React 기본 문법을 사용하는 곳:
 // - import: 외부 라이브러리나 다른 파일에서 기능을 가져올 때 사용
-// - useState: 컴포넌트 내부에서 상태(state)를 선언/관리할 때 사용
+// - useState: 컴포넌트 내부에서 상태(state)를 선언/관리할 때 사용 
+// 컴포넌트가 화면에 나타났을 때(API 호출 등), 특정 값이 바뀔 때 실행
 // - useEffect: 컴포넌트의 "사이드 이펙트"(예: API 호출)를 처리할 때 사용
 import React, { useState, useEffect } from 'react';
-import axios from 'axios';
+import axios from 'axios'; //JavaScript HTTP 요청 라이브러리 API 서버에서 데이터를 가져올 떄 사용
 import CurrencyConverter from './CurrencyConverter';
 
 // 환경변수 사용 예:
 // process.env.REACT_APP_EXCHANGE_RATE_API_KEY 는 .env에 설정한 값(개인 키)을 참조
+// 환경변수를 쓰는 이유 → 보안 + 깃허브 업로드 시 키 노출 방지
 const BASE_URL = `https://v6.exchangerate-api.com/v6/${API_KEY}/latest/USD`;
 
 // 함수형 컴포넌트 선언: React에서는 함수가 UI(컴포넌트)를 반환함
 function CurrencyFetcher() {
-  // - rates: 환율 데이터가 들어갈 변수 (초기 null)
-  // - loading: 로딩 중 표시를 위한 boolean
-  // - error: 에러 메시지를 저장
-  const [rates, setRates] = useState(null); // !!null true 달리는 조건 확인!!
+  // - rates: 환율 데이터가 들어갈 변수 (초기 null)  처음엔 데이터를 아직 못 받아왔으므로 null로 시작
+  // - loading: 로딩 중 표시를 위한 boolean 데이터 요청 중인지 표시 (true → 로딩중)
+  // - error: 에러 메시지를 저장  null이면 에러 없음
+  const [rates, setRates] = useState(null); // !!null true 달리는 조건 확인!! -> useState는 타입이 고정되어 있지 않기 때문
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null); // String, NULL, Boolean
 

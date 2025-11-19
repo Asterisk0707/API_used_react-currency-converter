@@ -1,3 +1,7 @@
+// CurrencyFetcher.js "이터(환율) 가져오기/상태 관리/에러·로딩 처리 담당
+// API 호출(axios), 환경변수(API_KEY) 사용, useEffect로 마운트 시 환율을 가져옴. 
+// loading/error 상태 관리 후 데이터를 자식 컴포넌트에 전달.
+// rates, loading, error (데이터 흐름/비동기 처리 관련)
 // 리액트에서 가장 기본적인 상태(state) 관리 도구
 // -> 화면에 표시되는 값이 변경될 때 자동으로 컴포넌트를 다시 랜더링해 줌
 import React, { useState } from 'react'; //// React와 useState 훅을 임포트
